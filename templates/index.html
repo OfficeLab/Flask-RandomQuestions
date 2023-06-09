@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Jinja: Add Head from Template -->
+    {% include 'partials/head.html' %}
+
+<body>
+    
+	<!-- Jinja: Add Navbar from Template -->
+	{% include 'partials/nav.html' %}
+	
+	<!-- Content -->
+	<div class="container">
+
+		<!-- Jinja: Check for Content in DB-->
+		{% if total_todo == 0%}
+			<marquee class="mt-4 display-6" behavior="" direction="">No Questions in database... Create Todo in form</marquee>
+		{% endif %} 
+		<br />
+
+		<!-- Jinja: Loop Through Content of DB -->
+		{% for question in questionList %}
+			<div class="card mt-4">
+				<h5 class="card-header bg-dark text-white fs-6">#{{ question.id }} | {{ question.category }}</h5>
+				<div class="card-body">
+					<h5 class="card-title">{{ question.question }}</h5>
+				</div>
+			</div>
+		{% endfor %}
+		
+		<!-- Reshuffle Button -->
+		<a class="btn btn-secondary btn-lg col-12 mt-5" href="/">New Questions</a>
+
+	</div>
+
+</body>
+</html>
